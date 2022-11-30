@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/ToolbarThongTin"
+        app:title="Thông Tin"
+        app:titleTextColor="#FFFFFF"
+        android:background="#8BC34A"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
+    <LinearLayout
+        android:background="@drawable/ois"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:text="Địa Chỉ Liên Hệ"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:textSize="35dp"
+            android:textStyle="bold"
+            android:textColor="#FBFBFB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:background="@drawable/boder"
+            android:layout_margin="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <TextView
+                android:drawableLeft="@drawable/diachi"
+                android:drawablePadding="20dp"
+                android:layout_margin="30dp"
+                android:textSize="23dp"
+                android:textColor="#111"
+                android:textStyle="bold"
+                android:text="Địa chỉ : My Xuyên - Mỹ Hương - Lương Tài - Bắc Ninh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/boder"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".Activity.ThongTinActivity" />
+    </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
