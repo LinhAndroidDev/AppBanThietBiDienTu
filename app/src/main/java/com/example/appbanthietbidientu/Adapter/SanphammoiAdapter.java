@@ -36,22 +36,21 @@ public class SanphammoiAdapter extends RecyclerView.Adapter<SanphammoiAdapter.Sa
     @Override
     public SanphamViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.dong_sanpham_moinhat,parent,false);
-
-        Animation animation= AnimationUtils.loadAnimation(context,R.anim.anim_spmoi);
-        view.startAnimation(animation);
         return new SanphamViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull SanphamViewHolder holder, int position) {
-        Sanpham sanpham=sanphamList.get(position);
+        Sanpham sanpham = sanphamList.get(position);
         holder.txtTensp.setText(sanpham.getTensanpham());
-        DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
-        holder.txtGiasp.setText("Giá: "+decimalFormat.format(sanpham.getGiasanpham())+"₫");
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        holder.txtGiasp.setText("Giá: " + decimalFormat.format(sanpham.getGiasanpham()) + "₫");
         Picasso.with(context).load(sanpham.getHinhanhsanpham())
                 .placeholder(R.drawable.loadimage)
                 .error(R.drawable.errorimage)
                 .into(holder.imgSp);
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.anim_spmoi);
+        holder.itemView.startAnimation(animation);
     }
 
     @Override

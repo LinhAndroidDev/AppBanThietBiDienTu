@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity{
     Toolbar toolbar;
     NavigationView navigationView;
     ViewFlipper viewFlipper;
-    ProgressBar loadSpMoi;
+    ProgressBar loadSpMoi,loadMain;
     RecyclerView listSanPhamMoi;
     ListView listManHinhChinh;
     ArrayList<Loaisp> loaispArrayList;
@@ -92,23 +92,19 @@ public class MainActivity extends AppCompatActivity{
                         Intent dienthoai = new Intent(MainActivity.this, DienThoaiActivity.class);
                         dienthoai.putExtra("idloaisanpham", loaispArrayList.get(i).getId());
                         startActivity(dienthoai);
-                        drawerLayout.close();
                         break;
                     case 2:
                         Intent laptop = new Intent(MainActivity.this, LaptopActivity.class);
                         laptop.putExtra("idloaisanpham", loaispArrayList.get(i).getId());
                         startActivity(laptop);
-                        drawerLayout.close();
                         break;
                     case 3:
                         Intent lienhe = new Intent(MainActivity.this, LienHeActivity.class);
                         startActivity(lienhe);
-                        drawerLayout.close();
                         break;
                     case 4:
                         Intent thongtin=new Intent(MainActivity.this,ThongTinActivity.class);
                         startActivity(thongtin);
-                        drawerLayout.close();
                         break;
                 }
             }
@@ -116,7 +112,8 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void GetDuLieusp() {
-        ApiSp.apiSp.getListsp().enqueue(new Callback<List<Sanpham>>() {
+        loadMain.setVisibility(View.VISIBLE);
+        ApiSp.apiSp.getListsp("media","04505275-acd8-47cb-9bdb-5885d1fbaeff").enqueue(new Callback<List<Sanpham>>() {
             @Override
             public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
                 sanphamArrayList= (ArrayList<Sanpham>) response.body();
@@ -126,11 +123,13 @@ public class MainActivity extends AppCompatActivity{
                 //Set sản phẩm mới
                 GridLayoutManager gridLayoutManager=new GridLayoutManager(getApplicationContext(),2);
                 listSanPhamMoi.setLayoutManager(gridLayoutManager);
+                loadMain.setVisibility(View.INVISIBLE);
             }
 
             @Override
             public void onFailure(Call<List<Sanpham>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
+                loadMain.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -182,14 +181,15 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void Khaibao() {
-        drawerLayout=findViewById(R.id.drawerlayout);
-        toolbar=findViewById(R.id.toolbar);
-        navigationView=findViewById(R.id.Navigation);
-        loadSpMoi=findViewById(R.id.loadSpMoi);
-        viewFlipper=findViewById(R.id.viewflipper);
-        listManHinhChinh=findViewById(R.id.listManhinhchinh);
-        listSanPhamMoi=findViewById(R.id.listSanphammoi);
-        sanphamArrayList=new ArrayList<>();
+        drawerLayout = findViewById(R.id.drawerlayout);
+        toolbar = findViewById(R.id.toolbar);
+        navigationView = findViewById(R.id.Navigation);
+        loadSpMoi = findViewById(R.id.loadSpMoi);
+        loadMain = findViewById(R.id.loadMain);
+        viewFlipper = findViewById(R.id.viewflipper);
+        listManHinhChinh = findViewById(R.id.listManhinhchinh);
+        listSanPhamMoi = findViewById(R.id.listSanphammoi);
+        sanphamArrayList = new ArrayList<>();
 
         loaispArrayList=new ArrayList<>();
         loaispArrayList.add(0,new Loaisp(0,"Trang Chính","https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-4/256/home-icon.png"));

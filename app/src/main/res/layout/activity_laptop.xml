@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#C1C1C1"
+    android:background="#FFFFFF"
     tools:context=".Activity.LaptopActivity"
-    android:gravity="center">
+    >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/ToolbarLapTop"
-        android:background="#5A5858"
-        app:title="LapTop"
-        app:titleTextColor="#FFFFFF"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="#2196F3"
+        app:title="LapTop"
+        app:titleTextColor="#FFFFFF" />
+
     <ListView
         android:id="@+id/listviewLaptop"
+        android:layout_below="@+id/ToolbarLapTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/loadLapTop"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"/>
+</RelativeLayout>

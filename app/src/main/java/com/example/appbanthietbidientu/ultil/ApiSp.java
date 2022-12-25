@@ -20,21 +20,23 @@ import retrofit2.http.Query;
 
 public interface ApiSp {
     Gson gson=new GsonBuilder().setDateFormat("dd-MM-yyy").create();
-
+    //https://firebasestorage.googleapis.com/v0/b/realtime-64f58.appspot.com/o/sanphammoinhat.json?alt=media&token=04505275-acd8-47cb-9bdb-5885d1fbaeff
+    //https://firebasestorage.googleapis.com/v0/b/realtime-64f58.appspot.com/o/laptop.json?alt=media&token=4452ff5b-1980-4626-b646-5fa4c03159d0
+    //https://firebasestorage.googleapis.com/v0/b/realtime-64f58.appspot.com/o/dienthoai.json?alt=media&token=d14eb726-c131-4860-a3e4-266d0aa206ed
     ApiSp apiSp=new Retrofit.Builder()
-            .baseUrl("http://10.90.119.32/server/")
+            .baseUrl("https://firebasestorage.googleapis.com/v0/b/realtime-64f58.appspot.com/o/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiSp.class);
 
-    @GET("getspmoinhat.php")
-    Call<List<Sanpham>> getListsp();
+    @GET("sanphammoinhat.json")
+    Call<List<Sanpham>> getListsp(@Query("alt") String alt,@Query("token") String token);
 
-    @GET("getsp.php")
-    Call<List<Sanpham>> getlistDienThoai(@Query("page") int page);
+    @GET("dienthoai.json")
+    Call<List<Sanpham>> getlistDienThoai(@Query("alt") String alt,@Query("token") String token);
 
-    @GET("getlaptop.php")
-    Call<List<Sanpham>> getlistLapTop();
+    @GET("laptop.json")
+    Call<List<Sanpham>> getlistLapTop(@Query("alt") String alt,@Query("token") String token);
 
     @Multipart
     @POST("thongtinkhachhang.php")

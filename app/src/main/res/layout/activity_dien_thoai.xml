@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#C1C1C1"
+    android:background="#FFFFFF"
     tools:context=".Activity.DienThoaiActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/ToolbarDienThoai"
-        android:background="#5A5858"
+        android:background="#2196F3"
         app:title="Điện Thoại"
         app:titleTextColor="#FFFFFF"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"/>
+        android:layout_height="?attr/actionBarSize"
+        />
     <ListView
         android:id="@+id/listviewDienThoai"
+        android:layout_below="@+id/ToolbarDienThoai"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/loadDienThoai"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"/>
+</RelativeLayout>

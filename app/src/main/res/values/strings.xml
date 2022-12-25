@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Trang Chính</string>
-    <string name="title_activity_thongtin_activty">ThongtinActivty</string>
+    <string name="app_name">AppBanThietBi</string>
     <string name="title_activity_thong_tin">ThongTinActivity</string>
+    <string name="Search">search</string>
 </resources>

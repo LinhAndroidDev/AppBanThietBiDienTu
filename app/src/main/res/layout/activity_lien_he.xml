@@ -16,55 +16,66 @@
         android:baselineAligned="false"
         app:title="Liên Hệ"
         app:titleTextColor="#FFFFFF" />
+    <TextView
+        android:text="Liên Hệ Với Chúng Tôi"
+        android:background="@drawable/tittle"
+        android:padding="30dp"
+        android:textSize="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <LinearLayout
         android:gravity="center"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-        <androidx.cardview.widget.CardView
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp">
-            <TextView
-                android:text="Tên: Nguyễn Hữu Linh"
-                android:textSize="25dp"
-                android:textColor="#111"
-                android:textStyle="bold"
-                android:padding="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </androidx.cardview.widget.CardView>
+            android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            app:cardCornerRadius="8dp">
+                <TextView
+                    android:background="@drawable/background_diachi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icon_user"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="Tên: Nguyễn Hữu Linh"
+                    android:textColor="#111"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:text="Sđt: 0969601767"
-                android:textColor="#111"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-        </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/background_diachi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icon_phone"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text=" Sđt: 0969601767"
+                    android:textColor="#111"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            app:cardCornerRadius="8dp">
-            <TextView
-                android:text="Email: nguyenlinh@gmail.com"
-                android:textSize="25dp"
-                android:textColor="#111"
-                android:textStyle="bold"
-                android:padding="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/background_diachi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icon_email"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="Email: nguyenlinh@gmail.com"
+                    android:textColor="#111"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
