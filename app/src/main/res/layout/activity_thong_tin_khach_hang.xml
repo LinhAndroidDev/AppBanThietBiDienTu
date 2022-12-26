@@ -17,7 +17,7 @@
         app:titleTextColor="#FFFFFF"/>
     <LinearLayout
         android:background="@drawable/boder"
-        android:layout_marginHorizontal="40dp"
+        android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="80dp"
         android:orientation="vertical"
         android:layout_width="match_parent"

@@ -16,16 +16,21 @@
             android:orientation="vertical">
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:background="@drawable/taixuong"
+                android:background="@drawable/orm"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ViewFlipper
-                    android:id="@+id/viewflipper"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"/>
+                android:layout_height="230dp">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="10dp">
+                    <ViewFlipper
+                        android:id="@+id/viewflipper"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"/>
+                </androidx.cardview.widget.CardView>
             </androidx.appcompat.widget.Toolbar>
             <LinearLayout
-                android:background="#7B36F3"
+                android:background="#0b162a"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -48,6 +53,7 @@
                     android:layout_height="match_parent">
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/listSanphammoi"
+                        android:layout_marginStart="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
                     <ProgressBar

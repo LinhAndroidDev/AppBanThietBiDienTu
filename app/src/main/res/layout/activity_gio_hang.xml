@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Activity.GioHangActivity"
+    android:background="#0b162a"
     android:weightSum="10">
 
     <androidx.appcompat.widget.Toolbar
@@ -72,22 +73,23 @@
     </LinearLayout>
 
     <Button
-        android:layout_weight="1"
         android:id="@+id/ThanhToanGioHang"
-        android:layout_marginHorizontal="5dp"
-        android:text="Thanh toán giỏ hàng"
-        android:textSize="20dp"
-        android:textColor="#FFEB3B"
-        android:textStyle="bold"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_weight="1"
+        android:text="Thanh toán giỏ hàng"
+        android:textColor="#303030"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
     <Button
         android:layout_weight="1"
         android:id="@+id/TiepTucMuaHang"
-        android:layout_marginHorizontal="5dp"
+        android:layout_marginHorizontal="10dp"
         android:text="Tiếp tục mua hàng"
         android:textSize="20dp"
-        android:textColor="#FFEB3B"
+        android:textColor="#151515"
         android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
