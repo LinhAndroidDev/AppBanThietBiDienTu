@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        overridePendingTransition(R.anim.animation_scale_enter_left,R.anim.animation_scale_exit_right);
+
         Khaibao();
 
         if(CheckConnect.haveNetworkConnected(getApplicationContext())){
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity{
                     case 0:
                         Intent intent = new Intent(MainActivity.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                         drawerLayout.close();
                         break;
                     case 1:

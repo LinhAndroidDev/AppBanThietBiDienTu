@@ -39,6 +39,8 @@ public class LaptopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_laptop);
 
+        overridePendingTransition(R.anim.animation_scale_enter_right,R.anim.animation_scale_exit_left);
+
         Khaibao();
         ActionBar();
         getData();
@@ -75,6 +77,7 @@ public class LaptopActivity extends AppCompatActivity {
     private void ActionBar() {
         setSupportActionBar(toolbarLapTop);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbarLapTop.setNavigationIcon(R.drawable.ic_action_back);
         toolbarLapTop.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

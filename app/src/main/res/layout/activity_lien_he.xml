@@ -12,7 +12,7 @@
         android:id="@+id/ToolbarLienHe"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#06BC0D"
+        android:background="#0b162a"
         android:baselineAligned="false"
         app:title="Liên Hệ"
         app:titleTextColor="#FFFFFF" />
@@ -32,32 +32,31 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-                <TextView
-                    android:background="@drawable/background_diachi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/icon_user"
-                    android:drawablePadding="10dp"
-                    android:gravity="center"
-                    android:padding="20dp"
-                    android:text="Tên: Nguyễn Hữu Linh"
-                    android:textColor="#111"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_diachi"
+                android:drawableLeft="@drawable/icon_user"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="Tên: Nguyễn Hữu Linh"
+                android:textColor="#111"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
-                <TextView
+            <TextView
                     android:layout_marginTop="50dp"
                     android:background="@drawable/background_diachi"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/icon_phone"
                     android:drawablePadding="10dp"
                     android:gravity="center"
-                    android:padding="20dp"
+                    android:padding="25dp"
                     android:text=" Sđt: 0969601767"
                     android:textColor="#111"
                     android:textSize="18dp"
@@ -66,12 +65,12 @@
                 <TextView
                     android:layout_marginTop="50dp"
                     android:background="@drawable/background_diachi"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/icon_email"
-                    android:drawablePadding="5dp"
+                    android:drawablePadding="15dp"
                     android:gravity="center"
-                    android:padding="20dp"
+                    android:padding="28dp"
                     android:text="Email: nguyenlinh@gmail.com"
                     android:textColor="#111"
                     android:textSize="17dp"

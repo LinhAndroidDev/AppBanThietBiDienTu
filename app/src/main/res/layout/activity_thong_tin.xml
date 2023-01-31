@@ -7,29 +7,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.ThongTinActivity">
-    <LinearLayout
-        android:background="@drawable/background_diachi"
+    <RelativeLayout
         android:layout_margin="30dp"
+        android:background="@drawable/background_diachi"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/backThongTin"
+            android:src="@drawable/ic_action_back_black"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"/>
         <TextView
             android:drawableLeft="@drawable/diachi"
             android:drawablePadding="20dp"
             android:layout_margin="30dp"
+            android:gravity="center"
             android:textSize="23dp"
             android:textColor="#111"
             android:textStyle="bold"
             android:text="Địa chỉ : P. Tạ Quang Bửu, Bách Khoa, Hai Bà Trưng, Hà Nội"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-    </LinearLayout>
-    <LinearLayout
-        android:background="@drawable/boder"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-    </LinearLayout>
+    </RelativeLayout>
 </fragment>

@@ -2,6 +2,7 @@ package com.example.appbanthietbidientu.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appbanthietbidientu.Activity.ChiTietSanPhamActivity;
@@ -45,6 +47,9 @@ public class SanphammoiAdapter extends RecyclerView.Adapter<SanphammoiAdapter.Sa
         holder.txtTensp.setText(sanpham.getTensanpham());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         holder.txtGiasp.setText("Giá: " + decimalFormat.format(sanpham.getGiasanpham()) + "₫");
+        Typeface semibold = ResourcesCompat.getFont(context,R.font.svn_gilroy_semibold);
+        holder.txtTensp.setTypeface(semibold);
+
         Picasso.with(context).load(sanpham.getHinhanhsanpham())
                 .placeholder(R.drawable.loadimage)
                 .error(R.drawable.errorimage)

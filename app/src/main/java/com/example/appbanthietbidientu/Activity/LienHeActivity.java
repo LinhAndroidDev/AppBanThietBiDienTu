@@ -19,6 +19,8 @@ public class LienHeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lien_he);
 
+        overridePendingTransition(R.anim.animation_scale_enter_right,R.anim.animation_scale_exit_left);
+
         Khaibao();
         Actionbar();
     }
@@ -43,6 +45,7 @@ public class LienHeActivity extends AppCompatActivity {
     private void Actionbar() {
         setSupportActionBar(toolbarLienHe);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbarLienHe.setNavigationIcon(R.drawable.ic_action_back);
         toolbarLienHe.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

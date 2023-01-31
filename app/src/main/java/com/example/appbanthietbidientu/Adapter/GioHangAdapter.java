@@ -1,6 +1,7 @@
 package com.example.appbanthietbidientu.Adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
+import androidx.core.content.res.ResourcesCompat;
+
+import com.example.appbanthietbidientu.Activity.ChiTietSanPhamActivity;
 import com.example.appbanthietbidientu.Activity.GioHangActivity;
 import com.example.appbanthietbidientu.Activity.MainActivity;
 import com.example.appbanthietbidientu.R;
@@ -46,7 +51,7 @@ public class GioHangAdapter extends BaseAdapter {
     public class ViewHolder{
         TextView txtTenGioHang,txtGiaGioHang,btnvalue;
         ImageView imgGioHang;
-        Button btnminus,btnmaximum;
+        CardView btnminus,btnmaximum;
     }
 
     @Override
@@ -71,6 +76,8 @@ public class GioHangAdapter extends BaseAdapter {
 
         GioHang gioHang=gioHangList.get(i);
         viewHolder.txtTenGioHang.setText(gioHang.getTensp());
+        Typeface semibold = ResourcesCompat.getFont(context,R.font.svn_gilroy_semibold);
+        viewHolder.txtTenGioHang.setTypeface(semibold);
         DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
         viewHolder.txtGiaGioHang.setText(decimalFormat.format(gioHang.getGiasp())+"₫");
         Picasso.with(context).load(gioHang.getHinhsp())

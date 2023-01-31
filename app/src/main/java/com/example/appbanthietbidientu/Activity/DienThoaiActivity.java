@@ -51,6 +51,8 @@ public class DienThoaiActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dien_thoai);
 
+        overridePendingTransition(R.anim.animation_scale_enter_right,R.anim.animation_scale_exit_left);
+
         if(CheckConnect.haveNetworkConnected(getApplicationContext())){
             Khaibao();
             ActionBar();
@@ -134,6 +136,7 @@ public class DienThoaiActivity extends AppCompatActivity {
     private void ActionBar() {
         setSupportActionBar(toolbarDienThoai);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbarDienThoai.setNavigationIcon(R.drawable.ic_action_back);
         toolbarDienThoai.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.appbanthietbidientu.R;
 import com.example.appbanthietbidientu.databinding.ActivityThongTinBinding;
@@ -30,6 +31,15 @@ public class ThongTinActivity extends FragmentActivity implements OnMapReadyCall
 
         binding = ActivityThongTinBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        overridePendingTransition(R.anim.animation_scale_enter_right,R.anim.animation_scale_exit_left);
+
+        binding.backThongTin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()

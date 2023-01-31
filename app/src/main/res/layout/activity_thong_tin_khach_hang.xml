@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#048551"
+    android:background="#CDDC39"
     tools:context=".Activity.ThongTinKhachHang">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/ToolbarThongTinKhachHang"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#F44336"
+        android:background="#0b162a"
         app:title="Thông Tin Khách Hàng"
         app:titleTextColor="#FFFFFF"/>
     <LinearLayout
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/SoDienThoai"
-                android:inputType="text"
+                android:inputType="number"
                 android:textSize="20dp"
                 android:textColor="#111"
                 android:hint="Nhập số điện thoại"

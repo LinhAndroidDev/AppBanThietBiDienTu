@@ -34,6 +34,8 @@ public class ThongTinKhachHang extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_tin_khach_hang);
 
+        overridePendingTransition(R.anim.animation_scale_enter_right,R.anim.animation_scale_exit_left);
+
         //set thông báo xác nhận
         progressDialog=new ProgressDialog(ThongTinKhachHang.this);
         progressDialog.setMessage("Please wait ...");
@@ -102,6 +104,7 @@ public class ThongTinKhachHang extends AppCompatActivity {
     private void Actionbar() {
         setSupportActionBar(toolbarThongTinKhachHang);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbarThongTinKhachHang.setNavigationIcon(R.drawable.ic_action_back);
         toolbarThongTinKhachHang.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

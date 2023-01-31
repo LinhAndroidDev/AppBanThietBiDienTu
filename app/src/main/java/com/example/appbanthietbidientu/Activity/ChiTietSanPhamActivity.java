@@ -3,8 +3,10 @@ package com.example.appbanthietbidientu.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +37,8 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_san_pham);
 
+        overridePendingTransition(R.anim.animation_enter_right,R.anim.animation_exit_left);
+
         Khaibao();
         Actionbar();
         getInforsp();
@@ -56,18 +60,18 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
                             if(MainActivity.gioHangArrayList.get(i).getSoluongsp() >= 10){
                                 MainActivity.gioHangArrayList.get(i).setSoluongsp(10);
                             }
-                            MainActivity.gioHangArrayList.get(i).setGiasp(sanpham.getGiasanpham() * MainActivity.gioHangArrayList.get(i).getSoluongsp());
+                            MainActivity.gioHangArrayList.get(i).setGiasp((long) sanpham.getGiasanpham() * MainActivity.gioHangArrayList.get(i).getSoluongsp());
                             exits=true;
                         }
                     }
-                    if(exits == false){
+                    if(!exits){
                         int soluong=Integer.parseInt(spinner.getSelectedItem().toString());
-                        long giaMoi= soluong * sanpham.getGiasanpham();
+                        long giaMoi= (long) soluong * sanpham.getGiasanpham();
                         MainActivity.gioHangArrayList.add(new GioHang(sanpham.getId(), sanpham.getTensanpham(), giaMoi, sanpham.getHinhanhsanpham(), soluong));
                     }
                 }else{
                     int soluong=Integer.parseInt(spinner.getSelectedItem().toString());
-                    long giaMoi= soluong * sanpham.getGiasanpham();
+                    long giaMoi= (long) soluong * sanpham.getGiasanpham();
                     MainActivity.gioHangArrayList.add(new GioHang(sanpham.getId(), sanpham.getTensanpham(), giaMoi, sanpham.getHinhanhsanpham(), soluong));
                 }
                 Intent intent=new Intent(getApplicationContext(),GioHangActivity.class);
@@ -84,18 +88,16 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.iconGioHang:
-                Intent intent=new Intent(getApplicationContext(),GioHangActivity.class);
-                startActivity(intent);
-                break;
+        if (item.getItemId() == R.id.iconGioHang) {
+            Intent intent = new Intent(getApplicationContext(), GioHangActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void CatchEvenSpinner() {
         Integer[] soluong=new Integer[]{1,2,3,4,5,6,7,8,9,10};
-        ArrayAdapter<Integer> integerArrayAdapter=new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_dropdown_item,soluong);
+        ArrayAdapter<Integer> integerArrayAdapter= new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, soluong);
         spinner.setAdapter(integerArrayAdapter);
     }
 
@@ -104,8 +106,10 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
         tenChiTiet.setText(sanpham.getTensanpham());
         DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
-        giaChiTiet.setText("Giá: "+decimalFormat.format(sanpham.getGiasanpham())+"₫");
+        giaChiTiet.setText(String.format("Giá: %s₫", decimalFormat.format(sanpham.getGiasanpham())));
         motaChiTiet.setText(sanpham.getMotasanpham());
+        Typeface regular = ResourcesCompat.getFont(ChiTietSanPhamActivity.this,R.font.svn_gilroy_regular);
+        motaChiTiet.setTypeface(regular);
         Picasso.with(getApplicationContext()).load(sanpham.getHinhanhsanpham())
                 .placeholder(R.drawable.loadimage)
                 .error(R.drawable.errorimage)
@@ -115,6 +119,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
     private void Actionbar() {
         setSupportActionBar(toolbarChitietsp);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbarChitietsp.setNavigationIcon(R.drawable.ic_action_back);
         toolbarChitietsp.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

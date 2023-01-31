@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -36,6 +38,8 @@ public class GioHangActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gio_hang);
+
+        overridePendingTransition(R.anim.animation_down_to_up,R.anim.animation_exit_left);
 
         Khaibao();
         Actionbar();
@@ -139,6 +143,7 @@ public class GioHangActivity extends AppCompatActivity {
     private void Actionbar() {
         setSupportActionBar(toolbarGioHang);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbarGioHang.setNavigationIcon(R.drawable.ic_action_back);
         toolbarGioHang.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

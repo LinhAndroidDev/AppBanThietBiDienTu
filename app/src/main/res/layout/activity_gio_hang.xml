@@ -13,7 +13,7 @@
         android:id="@+id/ToolbarGioHang"
         app:title="Giỏ Hàng"
         app:titleTextColor="#FFFFFF"
-        android:background="#F44336"
+        android:background="#FFC107"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
     <LinearLayout
