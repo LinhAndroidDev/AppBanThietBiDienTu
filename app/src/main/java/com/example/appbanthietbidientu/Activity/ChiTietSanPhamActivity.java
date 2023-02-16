@@ -137,4 +137,9 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
         spinner=findViewById(R.id.spinnerChiTietSanPham);
         themVaoGioHang=findViewById(R.id.ThemGioHangChiTietSanPham);
     }
+
+    @Override
+    public void finish() {
+        super.finish();
+    }
 }

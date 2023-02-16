@@ -24,6 +24,7 @@ import com.example.appbanthietbidientu.Adapter.SanphamAdapter;
 import com.example.appbanthietbidientu.R;
 import com.example.appbanthietbidientu.model.Sanpham;
 import com.example.appbanthietbidientu.ultil.ApiSp;
+import com.example.appbanthietbidientu.ultil.BaseFunctionActivity;
 import com.example.appbanthietbidientu.ultil.CheckConnect;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DienThoaiActivity extends AppCompatActivity {
+public class DienThoaiActivity extends BaseFunctionActivity {
     SearchView searchView;
     Toolbar toolbarDienThoai;
     ProgressBar loadDienThoai;
@@ -50,8 +51,6 @@ public class DienThoaiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dien_thoai);
-
-        overridePendingTransition(R.anim.animation_scale_enter_right,R.anim.animation_scale_exit_left);
 
         if(CheckConnect.haveNetworkConnected(getApplicationContext())){
             Khaibao();

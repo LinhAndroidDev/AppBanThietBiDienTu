@@ -3,26 +3,34 @@ package com.example.appbanthietbidientu.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.appbanthietbidientu.R;
+import com.example.appbanthietbidientu.ultil.BaseFunctionActivity;
 
-public class LienHeActivity extends AppCompatActivity {
+public class LienHeActivity extends BaseFunctionActivity {
     Toolbar toolbarLienHe;
+    TextView txtNameUser,txtPhoneUser,txtEmailUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lien_he);
 
-        overridePendingTransition(R.anim.animation_scale_enter_right,R.anim.animation_scale_exit_left);
-
         Khaibao();
         Actionbar();
+
+        Typeface berkSwa = ResourcesCompat.getFont(this,R.font.svn_androgyne);
+        txtNameUser.setTypeface(berkSwa);
+        txtPhoneUser.setTypeface(berkSwa);
+        txtEmailUser.setTypeface(berkSwa);
     }
 
     @Override
@@ -56,5 +64,8 @@ public class LienHeActivity extends AppCompatActivity {
 
     private void Khaibao() {
         toolbarLienHe=findViewById(R.id.ToolbarLienHe);
+        txtNameUser = findViewById(R.id.txtNameUser);
+        txtPhoneUser = findViewById(R.id.txtPhoneUser);
+        txtEmailUser = findViewById(R.id.txtEmailUser);
     }
 }

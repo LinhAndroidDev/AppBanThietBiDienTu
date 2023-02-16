@@ -36,45 +36,76 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_diachi"
-                android:drawableLeft="@drawable/icon_user"
+                android:layout_height="70dp"
+                android:orientation="horizontal"
                 android:gravity="center"
-                android:padding="20dp"
-                android:text="Tên: Nguyễn Hữu Linh"
-                android:textColor="#111"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <TextView
-                    android:layout_marginTop="50dp"
-                    android:background="@drawable/background_diachi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/icon_phone"
-                    android:drawablePadding="10dp"
-                    android:gravity="center"
-                    android:padding="25dp"
-                    android:text=" Sđt: 0969601767"
-                    android:textColor="#111"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-
+                android:background="@drawable/background_diachi">
+                <ImageView
+                    android:src="@drawable/icon_user"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"/>
                 <TextView
-                    android:layout_marginTop="50dp"
-                    android:background="@drawable/background_diachi"
-                    android:layout_width="match_parent"
+                    android:id="@+id/txtNameUser"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/icon_email"
-                    android:drawablePadding="15dp"
                     android:gravity="center"
-                    android:padding="28dp"
-                    android:text="Email: nguyenlinh@gmail.com"
+                    android:layout_marginStart="20dp"
+                    android:text="Tên: Nguyễn Hữu Linh"
                     android:textColor="#111"
-                    android:textSize="17dp"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/background_diachi">
+                <ImageView
+                    android:src="@drawable/icon_phone"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:id="@+id/txtPhoneUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:text="0969601767"
+                    android:textColor="#111"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/background_diachi">
+                <ImageView
+                    android:src="@drawable/icon_email"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:id="@+id/txtEmailUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:text="nguyenlinh07082001bn@gmail.com"
+                    android:textColor="#111"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

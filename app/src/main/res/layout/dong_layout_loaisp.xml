@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center"
-    android:weightSum="10">
+    android:weightSum="10"
+    android:padding="7dp">
     
     <LinearLayout
         android:layout_weight="3"
@@ -13,9 +14,9 @@
         <ImageView
             android:id="@+id/imageloaisp"
             android:src="@mipmap/ic_launcher"
-            android:layout_margin="5dp"
-            android:layout_width="60dp"
-            android:layout_height="60dp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <LinearLayout
@@ -25,8 +26,8 @@
         <TextView
             android:id="@+id/textviewloaisp"
             android:layout_margin="5dp"
-            android:textSize="23dp"
-            android:textColor="#E11607"
+            android:textSize="21sp"
+            android:textColor="@color/black"
             android:text="Loại sản phẩm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

@@ -10,63 +10,73 @@
         android:id="@+id/drawerlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+            android:layout_height="match_parent">
+            <ImageView
                 android:background="@drawable/orm"
                 android:layout_width="match_parent"
-                android:layout_height="230dp">
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="10dp"
-                    app:cardBackgroundColor="#00FFFFFF">
-                    <ViewFlipper
-                        android:id="@+id/viewflipper"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"/>
-                </androidx.cardview.widget.CardView>
-            </androidx.appcompat.widget.Toolbar>
+                android:layout_height="250dp"/>
             <LinearLayout
-                android:background="#0b162a"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <LinearLayout
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
-                    <TextView
-                        android:layout_marginLeft="10dp"
-                        android:padding="5dp"
-                        android:text="Sản phẩm mới nhất"
-                        android:textColor="#FFEB3B"
-                        android:textStyle="bold|italic"
-                        android:textSize="28dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/listSanphammoi"
-                        android:layout_marginStart="15dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                    <ProgressBar
-                        android:id="@+id/loadMain"
-                        android:layout_centerInParent="true"
+                    android:layout_height="210dp">
+                    <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="invisible"/>
-                </RelativeLayout>
+                        app:cardCornerRadius="10dp"
+                        app:cardBackgroundColor="#00FFFFFF"
+                        app:cardElevation="0dp">
+                        <ViewFlipper
+                            android:id="@+id/viewflipper"
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"/>
+                    </androidx.cardview.widget.CardView>
+                </androidx.appcompat.widget.Toolbar>
+                <LinearLayout
+                    android:background="@color/background"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+                        <TextView
+                            android:id="@+id/titleHome"
+                            android:layout_marginStart="10dp"
+                            android:padding="5dp"
+                            android:text="Sản phẩm mới nhất"
+                            android:textColor="#FFEB3B"
+                            android:textStyle="bold|italic"
+                            android:textSize="28sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/listSanphammoi"
+                            android:layout_marginStart="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                        <ProgressBar
+                            android:id="@+id/loadMain"
+                            android:layout_centerInParent="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="invisible"/>
+                    </RelativeLayout>
 
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/Navigation"
             android:layout_gravity="start"
@@ -77,31 +87,32 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <LinearLayout
-                    android:background="@drawable/okg"
+                    android:background="@drawable/change_color"
                     android:layout_width="match_parent"
                     android:layout_marginBottom="20dp"
-                    android:weightSum="2"
                     android:orientation="vertical"
-                    android:layout_height="200dp">
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
+                    android:layout_height="150dp">
+                    <TextView
+                        android:text="Trang Chủ"
+                        android:layout_margin="20dp"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:text="Trang Chủ"
-                            android:textColor="#111"
-                            android:textSize="60dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
                 </LinearLayout>
                 <ListView
                     android:id="@+id/listManhinhchinh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/logout"
+                    android:text="Đăng Xuất"
+                    android:textSize="18sp"
+                    android:textColor="#F44336"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:background="@drawable/boder_logout"
+                    android:elevation="2dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>

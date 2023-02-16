@@ -27,6 +27,7 @@
                 android:id="@+id/textviewThongbao"
                 android:textSize="30dp"
                 android:layout_gravity="center"
+                android:textColor="#FFEB3B"
                 android:text="Giỏ hàng của bạn đang trống"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -52,7 +53,7 @@
                 <TextView
                     android:text="Tổng Tiền: "
                     android:textSize="30dp"
-                    android:textColor="#F44336"
+                    android:textColor="#FFEB3B"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -64,8 +65,8 @@
                 <TextView
                     android:id="@+id/textviewTongTien"
                     android:text="Giá Trị"
-                    android:textSize="30dp"
-                    android:textColor="#F44336"
+                    android:textSize="30sp"
+                    android:textColor="#FFEB3B"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>

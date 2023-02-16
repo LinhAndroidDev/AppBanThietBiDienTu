@@ -54,8 +54,8 @@ public class SanphammoiAdapter extends RecyclerView.Adapter<SanphammoiAdapter.Sa
                 .placeholder(R.drawable.loadimage)
                 .error(R.drawable.errorimage)
                 .into(holder.imgSp);
-        Animation animation = AnimationUtils.loadAnimation(context, R.anim.anim_spmoi);
-        holder.itemView.startAnimation(animation);
+//        Animation animation = AnimationUtils.loadAnimation(context, R.anim.anim_spmoi);
+//        holder.itemView.startAnimation(animation);
     }
 
     @Override

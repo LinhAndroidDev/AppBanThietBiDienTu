@@ -58,7 +58,7 @@ public class LoaispAdapter extends BaseAdapter {
             }
             Loaisp loaisp= loaispList.get(i);
             viewHolder.tenloaisp.setText(loaisp.getTenloaisp());
-            Picasso.with(context).load(loaisp.getHinhanhloaisp()).into(viewHolder.hinhanhloaisp);
+            viewHolder.hinhanhloaisp.setImageResource(loaisp.getHinhanhloaisp());
 
             return view;
         }

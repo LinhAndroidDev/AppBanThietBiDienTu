@@ -3,9 +3,9 @@ package com.example.appbanthietbidientu.model;
 public class Loaisp {
     private int id;
     private String tenloaisp;
-    private String hinhanhloaisp;
+    int hinhanhloaisp;
 
-    public Loaisp(int id, String tenloaisp, String hinhanhloaisp) {
+    public Loaisp(int id, String tenloaisp, int hinhanhloaisp) {
         this.id = id;
         this.tenloaisp = tenloaisp;
         this.hinhanhloaisp = hinhanhloaisp;
@@ -27,11 +27,11 @@ public class Loaisp {
         this.tenloaisp = tenloaisp;
     }
 
-    public String getHinhanhloaisp() {
+    public int getHinhanhloaisp() {
         return hinhanhloaisp;
     }
 
-    public void setHinhanhloaisp(String hinhanhloaisp) {
+    public void setHinhanhloaisp(int hinhanhloaisp) {
         this.hinhanhloaisp = hinhanhloaisp;
     }
 }

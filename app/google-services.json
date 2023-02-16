@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "759400115989",
+    "project_id": "appthietbidientu",
+    "storage_bucket": "appthietbidientu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:759400115989:android:486c1ade7b30213b4d031c",
+        "android_client_info": {
+          "package_name": "com.example.appbanthietbidientu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "759400115989-4qjvflb8fqep6pfblbenb10ouhquaji7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appbanthietbidientu",
+            "certificate_hash": "f0ce42a3f029a83b3d2c14c8ba9987ac2d490e17"
+          }
+        },
+        {
+          "client_id": "759400115989-fnj5hoi9i517rd0og848ftjoagrt2531.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd2d7XAaTOgKXzLRm64IPr2iwJ6JfElDo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "759400115989-fnj5hoi9i517rd0og848ftjoagrt2531.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

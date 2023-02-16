@@ -3,6 +3,7 @@ package com.example.appbanthietbidientu.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.appbanthietbidientu.R;
 import com.example.appbanthietbidientu.model.User;
@@ -69,6 +71,10 @@ public class ThongTinKhachHang extends AppCompatActivity {
                     @Override
                     public void onFinish() {
                         progressDialog.dismiss();
+                        Intent intent = new Intent(ThongTinKhachHang.this,MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        Toast.makeText(getApplicationContext(),"Cảm ơn bạn đã mua hàng",Toast.LENGTH_LONG).show();
                     }
                 }.start();
 
@@ -120,5 +126,11 @@ public class ThongTinKhachHang extends AppCompatActivity {
         NhapEmail = findViewById(R.id.EmailKhachHang);
         XacNhan = findViewById(R.id.XacNhan);
         Huy = findViewById(R.id.Huy);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.animation_scale_enter_left,R.anim.animation_scale_exit_right);
     }
 }

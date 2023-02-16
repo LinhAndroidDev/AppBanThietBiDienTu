@@ -3,22 +3,26 @@ package com.example.appbanthietbidientu.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
@@ -52,6 +56,7 @@ public class MainActivity extends AppCompatActivity{
     ListView listManHinhChinh;
     ArrayList<Loaisp> loaispArrayList;
     ArrayList<Sanpham> sanphamArrayList;
+    TextView titleHome,logout;
     public static ArrayList<GioHang> gioHangArrayList;
 
     @Override
@@ -59,7 +64,7 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        overridePendingTransition(R.anim.animation_scale_enter_left,R.anim.animation_scale_exit_right);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         Khaibao();
 
@@ -72,6 +77,18 @@ public class MainActivity extends AppCompatActivity{
             Toast.makeText(getApplicationContext(),"Error connect Internet",Toast.LENGTH_LONG).show();
             finish();
         }
+
+        Typeface andro = ResourcesCompat.getFont(MainActivity.this,R.font.svn_androgyne);
+        titleHome.setTypeface(andro);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
 
         Animation anim_in_right= AnimationUtils.loadAnimation(this,R.anim.anim_in_right);
         Animation anim_out_right=AnimationUtils.loadAnimation(this,R.anim.anim_out_right);
@@ -192,14 +209,16 @@ public class MainActivity extends AppCompatActivity{
         viewFlipper = findViewById(R.id.viewflipper);
         listManHinhChinh = findViewById(R.id.listManhinhchinh);
         listSanPhamMoi = findViewById(R.id.listSanphammoi);
+        titleHome = findViewById(R.id.titleHome);
+        logout = findViewById(R.id.logout);
         sanphamArrayList = new ArrayList<>();
 
         loaispArrayList=new ArrayList<>();
-        loaispArrayList.add(0,new Loaisp(0,"Trang Chính","https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-4/256/home-icon.png"));
-        loaispArrayList.add(1,new Loaisp(0,"Điện Thoại","https://cdn01.dienmaycholon.vn/filewebdmclnew/public//userupload/images/dien-thoai-Samsung-Galaxy-S10-Plus-1.jpg"));
-        loaispArrayList.add(2,new Loaisp(0,"Laptop","https://cdn.tgdd.vn/Files/2017/01/19/939425/cach-cai-hinh-nen-may-tinh-khong-bi-mo_1280x720-800-resize.jpg"));
-        loaispArrayList.add(3,new Loaisp(0,"Liên Hệ","https://invoice.fast.com.vn/images/contact-us-icon.png"));
-        loaispArrayList.add(4,new Loaisp(0,"Thông Tin","https://e7.pngegg.com/pngimages/330/43/png-clipart-computer-icons-businessperson-3d-character-icon-material-cartoon-character-camera-icon.png"));
+        loaispArrayList.add(0,new Loaisp(0,"Trang Chính",R.drawable.ic_action_home));
+        loaispArrayList.add(1,new Loaisp(0,"Điện Thoại",R.drawable.ic_action_phone));
+        loaispArrayList.add(2,new Loaisp(0,"Laptop",R.drawable.ic_action_laptop));
+        loaispArrayList.add(3,new Loaisp(0,"Liên Hệ",R.drawable.ic_action_contact));
+        loaispArrayList.add(4,new Loaisp(0,"Thông Tin",R.drawable.ic_action_infor));
 
         LoaispAdapter loaispAdapter=new LoaispAdapter(loaispArrayList,MainActivity.this);
         listManHinhChinh.setAdapter(loaispAdapter);

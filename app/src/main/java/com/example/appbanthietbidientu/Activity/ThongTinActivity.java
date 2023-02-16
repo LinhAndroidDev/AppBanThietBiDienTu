@@ -7,6 +7,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.example.appbanthietbidientu.R;
 import com.example.appbanthietbidientu.databinding.ActivityThongTinBinding;
@@ -32,6 +33,8 @@ public class ThongTinActivity extends FragmentActivity implements OnMapReadyCall
         binding = ActivityThongTinBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
         overridePendingTransition(R.anim.animation_scale_enter_right,R.anim.animation_scale_exit_left);
 
         binding.backThongTin.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +48,12 @@ public class ThongTinActivity extends FragmentActivity implements OnMapReadyCall
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.animation_scale_enter_left,R.anim.animation_scale_exit_right);
     }
 
     /**

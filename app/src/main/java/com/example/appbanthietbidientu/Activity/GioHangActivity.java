@@ -122,6 +122,7 @@ public class GioHangActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(),"Mời bạn tiếp tục mua hàng",Toast.LENGTH_SHORT).show();
             }
@@ -150,5 +151,11 @@ public class GioHangActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.animation_enter_left,R.anim.animation_up_to_down);
     }
 }

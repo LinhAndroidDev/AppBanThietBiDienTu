@@ -19,6 +19,7 @@ import com.example.appbanthietbidientu.Adapter.SanphamAdapter;
 import com.example.appbanthietbidientu.R;
 import com.example.appbanthietbidientu.model.Sanpham;
 import com.example.appbanthietbidientu.ultil.ApiSp;
+import com.example.appbanthietbidientu.ultil.BaseFunctionActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LaptopActivity extends AppCompatActivity {
+public class LaptopActivity extends BaseFunctionActivity {
     SearchView searchView;
     Toolbar toolbarLapTop;
     ProgressBar loadLapTop;
@@ -38,8 +39,6 @@ public class LaptopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_laptop);
-
-        overridePendingTransition(R.anim.animation_scale_enter_right,R.anim.animation_scale_exit_left);
 
         Khaibao();
         ActionBar();

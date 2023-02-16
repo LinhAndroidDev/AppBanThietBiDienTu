@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.GetOTP"
+    android:background="@drawable/background_login">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <EditText
+            android:id="@+id/otp"
+            android:layout_width="250dp"
+            android:textSize="25dp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:text=""
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boder_edit_text"
+            android:ems="10"
+            android:inputType="phone" />
+        <ToggleButton
+            android:id="@+id/NhapOTP"
+            android:textOn="Nhập vào OTP"
+            android:textOff="Nhập vào OTP"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:background="@drawable/login"
+            android:layout_marginTop="40dp"
+            android:paddingHorizontal="90dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>

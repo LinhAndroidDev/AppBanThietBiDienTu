@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#CDDC39"
+    android:background="@drawable/background_login"
     tools:context=".Activity.ThongTinKhachHang">
 
     <androidx.appcompat.widget.Toolbar
@@ -39,7 +39,7 @@
             <EditText
                 android:id="@+id/TenKhachHang"
                 android:inputType="text"
-                android:textSize="20dp"
+                android:textSize="18sp"
                 android:textColor="#111"
                 android:hint="Nhập tên khách hàng"
                 android:layout_width="match_parent"
@@ -53,7 +53,7 @@
             <EditText
                 android:id="@+id/SoDienThoai"
                 android:inputType="number"
-                android:textSize="20dp"
+                android:textSize="18sp"
                 android:textColor="#111"
                 android:hint="Nhập số điện thoại"
                 android:layout_width="match_parent"
@@ -67,7 +67,7 @@
             <EditText
                 android:id="@+id/EmailKhachHang"
                 android:inputType="text"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:textColor="#111"
                 android:hint="Nhập email"
                 android:layout_width="match_parent"
