@@ -1,27 +1,25 @@
 package com.example.appbanthietbidientu.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.res.ResourcesCompat;
+
 import com.example.appbanthietbidientu.Adapter.GioHangAdapter;
 import com.example.appbanthietbidientu.R;
-import com.example.appbanthietbidientu.model.GioHang;
 import com.example.appbanthietbidientu.ultil.CheckConnect;
 
 import java.text.DecimalFormat;
@@ -31,8 +29,9 @@ public class GioHangActivity extends AppCompatActivity {
     ListView lvGioHang;
     TextView txtThongBao;
     static TextView txtTongTien;
-    Button btnThanhToanTien,btnTiepTucMua;
+    TextView btnThanhToanTien,btnTiepTucMua;
     GioHangAdapter gioHangAdapter;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +86,7 @@ public class GioHangActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("SetTextI18n")
     public static void EvenUltil() {
         long tongTien = 0;
         for(int i=0; i<MainActivity.gioHangArrayList.size(); i++){
@@ -118,6 +118,14 @@ public class GioHangActivity extends AppCompatActivity {
         gioHangAdapter=new GioHangAdapter(GioHangActivity.this,MainActivity.gioHangArrayList);
         lvGioHang.setAdapter(gioHangAdapter);
 
+        //set thông báo xác nhận
+        progressDialog=new ProgressDialog(GioHangActivity.this);
+        progressDialog.setMessage("Please wait ...");
+
+        Typeface medium = ResourcesCompat.getFont(this,R.font.svn_gilroy_medium);
+        btnThanhToanTien.setTypeface(medium);
+        btnTiepTucMua.setTypeface(medium);
+
         btnTiepTucMua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,8 +140,21 @@ public class GioHangActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(MainActivity.gioHangArrayList.size() >= 1){
-                    Intent intent=new Intent(GioHangActivity.this,ThongTinKhachHang.class);
-                    startActivity(intent);
+                    progressDialog.show();
+                    CountDownTimer countDownTimer = new CountDownTimer(3000,3000) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            progressDialog.dismiss();
+                            Intent intent=new Intent(GioHangActivity.this,ThongTinKhachHang.class);
+                            intent.putExtra("TotalMoney", String.valueOf(txtTongTien.getText()));
+                            startActivity(intent);
+                        }
+                    }.start();
                 }else {
                     CheckConnect.ShowToast_Short(getApplicationContext(),"Giỏ hàng của bạn chưa có sản phẩm");
                 }

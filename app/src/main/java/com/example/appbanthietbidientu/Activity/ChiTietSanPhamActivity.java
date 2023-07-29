@@ -29,7 +29,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
     ImageView anhChitietsp;
     TextView tenChiTiet,giaChiTiet,motaChiTiet;
     Spinner spinner;
-    Button themVaoGioHang;
+    TextView themVaoGioHang;
     Sanpham sanpham;
 
     @Override

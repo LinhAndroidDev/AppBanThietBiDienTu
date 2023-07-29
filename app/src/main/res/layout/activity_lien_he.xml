@@ -1,111 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/backgroundlienhe"
+    android:background="@drawable/background_login"
     tools:context=".Activity.LienHeActivity">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/ToolbarLienHe"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#0b162a"
-        android:baselineAligned="false"
-        app:title="Liên Hệ"
-        app:titleTextColor="#FFFFFF" />
-    <TextView
-        android:text="Liên Hệ Với Chúng Tôi"
-        android:background="@drawable/tittle"
-        android:padding="30dp"
-        android:textSize="30dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:textColor="#FFFFFF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <LinearLayout
-        android:gravity="center"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <LinearLayout
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <LinearLayout
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/ToolbarLienHe"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:background="@drawable/background_diachi">
-                <ImageView
-                    android:src="@drawable/icon_user"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="10dp"/>
-                <TextView
-                    android:id="@+id/txtNameUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginStart="20dp"
-                    android:text="Tên: Nguyễn Hữu Linh"
-                    android:textColor="#111"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
+                android:layout_height="?attr/actionBarSize"
+                android:background="#0b162a"
+                android:baselineAligned="false"
+                app:title="Liên Hệ"
+                app:titleTextColor="#FFFFFF" />
+            <TextView
+                android:text="Liên Hệ Với Chúng Tôi"
+                android:background="@drawable/tittle"
+                android:padding="30dp"
+                android:textSize="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:textColor="#FFFFFF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
             <LinearLayout
-                android:layout_marginTop="50dp"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:orientation="horizontal"
                 android:gravity="center"
-                android:background="@drawable/background_diachi">
-                <ImageView
-                    android:src="@drawable/icon_phone"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"/>
-                <TextView
-                    android:id="@+id/txtPhoneUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginStart="20dp"
-                    android:text="0969601767"
-                    android:textColor="#111"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_marginTop="50dp"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:background="@drawable/background_diachi">
-                <ImageView
-                    android:src="@drawable/icon_email"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"/>
-                <TextView
-                    android:id="@+id/txtEmailUser"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:text="nguyenlinh07082001bn@gmail.com"
-                    android:textColor="#111"
-                    android:textSize="16dp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:background="@drawable/background_diachi">
+                        <ImageView
+                            android:src="@drawable/icon_user"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="10dp"/>
+                        <TextView
+                            android:id="@+id/txtNameUser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:text="Tên: Nguyễn Hữu Linh"
+                            android:textColor="#111"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/contact"
+                        android:layout_marginTop="50dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:background="@drawable/background_diachi">
+                        <ImageView
+                            android:src="@drawable/icon_phone"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="10dp"/>
+                        <TextView
+                            android:id="@+id/txtPhoneUser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:text="0969601767"
+                            android:textColor="#111"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="50dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:background="@drawable/background_diachi">
+                        <ImageView
+                            android:src="@drawable/icon_email"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="10dp"/>
+                        <TextView
+                            android:id="@+id/txtEmailUser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:text="nguyenlinh07082001bn@gmail.com"
+                            android:textColor="#111"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+        <RelativeLayout
+            android:id="@+id/bgCoverLienHe"
+            android:background="#7A111111"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+    </RelativeLayout>
+    <include layout="@layout/layout_contact"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginActivity extends AppCompatActivity {
     TextView titleLogin,textAccount;
-    Button login;
+    TextView login;
     FirebaseAuth auth = FirebaseAuth.getInstance();
 
     @SuppressLint("MissingInflatedId")

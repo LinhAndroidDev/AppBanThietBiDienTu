@@ -47,13 +47,14 @@
             app:cardCornerRadius="10dp"
             app:cardBackgroundColor="#9EF13D"
             android:layout_marginTop="30dp">
-            <Button
+            <TextView
                 android:id="@+id/login"
                 android:text="Đăng nhập"
-                android:textSize="16sp"
+                android:textSize="14sp"
+                android:textStyle="bold"
                 android:textColor="#FFFFFF"
-                android:paddingVertical="10dp"
                 android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
                 android:textAllCaps="false"
                 android:background="#01C609"
                 android:layout_width="wrap_content"

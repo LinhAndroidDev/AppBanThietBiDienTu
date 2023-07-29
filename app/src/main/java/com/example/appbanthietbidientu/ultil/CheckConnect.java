@@ -1,11 +1,13 @@
 package com.example.appbanthietbidientu.ultil;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
 public class CheckConnect {
+    @SuppressLint("SuspiciousIndentation")
     public static boolean haveNetworkConnected(Context context) {
         boolean haveConnectedWifi = false;
         boolean haveConnectedMobile = false;
