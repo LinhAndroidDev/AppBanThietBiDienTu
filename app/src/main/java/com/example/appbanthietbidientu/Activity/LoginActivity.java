@@ -1,35 +1,31 @@
 package com.example.appbanthietbidientu.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.appbanthietbidientu.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthOptions;
-import com.google.firebase.auth.PhoneAuthProvider;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.concurrent.TimeUnit;
+import com.example.appbanthietbidientu.R;
+import com.example.appbanthietbidientu.response.SignInResponse;
+import com.example.appbanthietbidientu.ultil.ApiSp;
+import com.google.firebase.auth.FirebaseAuth;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView titleLogin,textAccount;
+    TextView titleLogin, registerAccount;
+    EditText edtAccount, edtPassword;
     TextView login;
     FirebaseAuth auth = FirebaseAuth.getInstance();
 
@@ -39,84 +35,64 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         titleLogin = findViewById(R.id.titleLogin);
-        textAccount = findViewById(R.id.textAccount);
+        edtAccount = findViewById(R.id.edtAccount);
+        edtPassword = findViewById(R.id.edtPassword);
         login = findViewById(R.id.login);
+        registerAccount = findViewById(R.id.register_account);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                String strPhone = textAccount.getText().toString();
-//                onClickDangNhap(strPhone);
-                Intent intent = new Intent(LoginActivity.this,GetOTP.class);
-                startActivity(intent);
-                finish();
+                String strEmail = edtAccount.getText().toString();
+                String strPassword = edtPassword.getText().toString();
+
+                if (strEmail.isEmpty() || strPassword.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), " Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(strEmail).matches()) {
+                    Toast.makeText(getApplicationContext(), "Vui lòng nhập lại Email", Toast.LENGTH_SHORT).show();
+                } else if (strPassword.length() < 6) {
+                    Toast.makeText(getApplicationContext(), "Mật khẩu phải có ít nhất 6 kí tự", Toast.LENGTH_SHORT).show();
+                } else {
+                    RequestBody requestBodyEmail = RequestBody.create(MediaType.parse("multipart/form-data"), strEmail);
+                    RequestBody requestBodyPassword = RequestBody.create(MediaType.parse("multipart/form-data"), strPassword);
+
+                    ApiSp.apiDevice.confirmLogin(requestBodyEmail, requestBodyPassword)
+                            .enqueue(new Callback<SignInResponse>() {
+                                @Override
+                                public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
+                                    if (response.body() != null) {
+                                        switch (response.body().statusCode) {
+                                            case 200:
+                                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                                intent.putExtra("email", strEmail);
+                                                startActivity(intent);
+                                                finish();
+                                                break;
+                                            case 401:
+                                                Toast.makeText(getApplicationContext(), "Tài khoản hoặc mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<SignInResponse> call, Throwable t) {
+                                    Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
             }
         });
 
-        Typeface andro = ResourcesCompat.getFont(LoginActivity.this,R.font.svn_androgyne);
-        titleLogin.setTypeface(andro);
-    }
-
-    private void onClickDangNhap(String strPhone) {
-        PhoneAuthOptions options =
-                PhoneAuthOptions.newBuilder(auth)
-                        .setPhoneNumber(strPhone)       // Phone number to verify
-                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                        .setActivity(this)                 // Activity (for callback binding)
-                        .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                            @Override
-                            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-                                signInWithPhoneAuthCredential(phoneAuthCredential);
-                            }
-
-                            @Override
-                            public void onVerificationFailed(@NonNull FirebaseException e) {
-                                Toast.makeText(LoginActivity.this,"Error Firebase",Toast.LENGTH_SHORT).show();
-                            }
-
-                            @Override
-                            public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                                super.onCodeSent(s, forceResendingToken);
-                                goToGetOtp(strPhone,s);
-                            }
-                        })          // OnVerificationStateChangedCallbacks
-                        .build();
-        PhoneAuthProvider.verifyPhoneNumber(options);
-    }
-
-    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
-        auth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            FirebaseUser user = task.getResult().getUser();
-                            goToMainActivity(user.getPhoneNumber());
-                        }else {
-                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                Toast.makeText(LoginActivity.this,"Error Sign",Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        }
-                });
-    }
-
-    private void goToGetOtp(String strPhone, String s) {
-        Intent intent = new Intent(LoginActivity.this, GetOTP.class);
-        intent.putExtra("phone number",strPhone);
-        intent.putExtra("ID",s);
-        startActivity(intent);
-        finish();
-    }
-
-    private void goToMainActivity(String phoneNumber) {
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        intent.putExtra("phone number",phoneNumber);
-        startActivity(intent);
-        finish();
+        registerAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

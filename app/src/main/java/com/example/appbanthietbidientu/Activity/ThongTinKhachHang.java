@@ -13,11 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.appbanthietbidientu.R;
-import com.example.appbanthietbidientu.model.User;
+import com.example.appbanthietbidientu.response.SignInResponse;
 import com.example.appbanthietbidientu.ultil.ApiSp;
 import com.example.appbanthietbidientu.ultil.CheckConnect;
-
-import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -66,21 +64,6 @@ public class ThongTinKhachHang extends AppCompatActivity {
                         Toast.makeText(ThongTinKhachHang.this,"Bạn chưa nhập đầy đủ thông tin",Toast.LENGTH_SHORT).show();
                     }else {
                         progressDialog.show();
-                        CountDownTimer countDownTimer=new CountDownTimer(3000,3000) {
-                            @Override
-                            public void onTick(long l) {
-
-                            }
-
-                            @Override
-                            public void onFinish() {
-                                progressDialog.dismiss();
-                                Intent intent = new Intent(ThongTinKhachHang.this,MainActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                                Toast.makeText(getApplicationContext(),"Cảm ơn bạn đã mua hàng",Toast.LENGTH_LONG).show();
-                            }
-                        }.start();
 
                         String strTen=NhapTenKhachHang.getText().toString().trim();
                         String strSDT=NhapSoDienThoai.getText().toString().trim();
@@ -90,23 +73,42 @@ public class ThongTinKhachHang extends AppCompatActivity {
                         RequestBody requestBodySDT=RequestBody.create(MediaType.parse("multipart/form-data"),strSDT);
                         RequestBody requestBodyEmail=RequestBody.create(MediaType.parse("multipart/form-data"),strEmail);
 
-                        ApiSp.donHangApi.getThongTinKhachHang(requestBodyTenKhachHang,requestBodySDT,requestBodyEmail).enqueue(new Callback<List<User>>() {
+                        CountDownTimer cd = new CountDownTimer(3000,3000) {
                             @Override
-                            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                                User user= (User) response.body();
+                            public void onTick(long l) {
 
-                                if(user != null){
-                                    NhapTenKhachHang.setText(user.getTenkhachhang());
-                                    NhapSoDienThoai.setText(user.getSodienthoai()+"");
-                                    NhapEmail.setText(user.getEmail());
-                                }
                             }
 
                             @Override
-                            public void onFailure(Call<List<User>> call, Throwable t) {
+                            public void onFinish() {
+                                ApiSp.apiDevice.getThongTinKhachHang(requestBodyTenKhachHang,requestBodySDT,requestBodyEmail)
+                                        .enqueue(new Callback<SignInResponse>() {
+                                            @Override
+                                            public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
+                                                if(response.body() != null){
+                                                    switch (response.body().statusCode){
+                                                        case 200:
+                                                            progressDialog.dismiss();
+                                                            MainActivity.gioHangArrayList.clear();
+                                                            Intent intent = new Intent(ThongTinKhachHang.this,MainActivity.class);
+                                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                            startActivity(intent);
+                                                            Toast.makeText(getApplicationContext(),"Cảm ơn bạn đã mua hàng",Toast.LENGTH_LONG).show();
+                                                            break;
+                                                        case 400:
+                                                            Toast.makeText(getApplicationContext(), response.body().message, Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            }
 
+                                            @Override
+                                            public void onFailure(Call<SignInResponse> call, Throwable t) {
+                                                Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                             }
-                        });
+                        }.start();
+
                     }
                 }else{
                     Toast.makeText(getApplicationContext(),"Error connect Internet",Toast.LENGTH_LONG).show();

@@ -1,10 +1,5 @@
 package com.example.appbanthietbidientu.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +9,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.appbanthietbidientu.Adapter.SanphamAdapter;
 import com.example.appbanthietbidientu.R;
@@ -56,7 +55,7 @@ public class LaptopActivity extends BaseFunctionActivity {
 
     private void getData() {
         loadLapTop.setVisibility(View.VISIBLE);
-        ApiSp.apiSp.getlistLapTop("media","4452ff5b-1980-4626-b646-5fa4c03159d0").enqueue(new Callback<List<Sanpham>>() {
+        ApiSp.apiDevice.getlistLapTop().enqueue(new Callback<List<Sanpham>>() {
             @Override
             public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
                 laptopArrayList= (ArrayList<Sanpham>) response.body();

@@ -22,6 +22,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.RegisterActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Activity.ConfirmActivity"
             android:exported="false">
             <meta-data
@@ -55,9 +62,6 @@
 
         <activity
             android:name=".Activity.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.GetOTP"
             android:exported="false" />
         <activity
             android:name=".Activity.ThongTinActivity"

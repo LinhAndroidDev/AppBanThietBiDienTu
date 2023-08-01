@@ -86,20 +86,52 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <LinearLayout
-                    android:background="@drawable/change_color"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical"
-                    android:layout_height="150dp">
+                    android:layout_height="180dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:background="@drawable/change_color" />
+
                     <TextView
                         android:text="Trang Chủ"
-                        android:layout_margin="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginStart="20dp"
                         android:textColor="@color/white"
                         android:textSize="30sp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="3dp"
+                        android:background="@drawable/bg_avatar"
+                        android:layout_marginStart="20dp"
+                        android:layout_alignParentBottom="true">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:src="@drawable/user_ad"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txtEmail"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Nguyễn Hữu Linh"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold|italic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
                 <ListView
                     android:id="@+id/listManhinhchinh"
                     android:layout_width="match_parent"

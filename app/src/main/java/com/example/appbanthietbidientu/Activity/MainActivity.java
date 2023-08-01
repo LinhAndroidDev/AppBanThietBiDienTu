@@ -1,15 +1,5 @@
 package com.example.appbanthietbidientu.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.res.ResourcesCompat;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -27,18 +17,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.appbanthietbidientu.Adapter.LoaispAdapter;
 import com.example.appbanthietbidientu.Adapter.SanphammoiAdapter;
 import com.example.appbanthietbidientu.R;
 import com.example.appbanthietbidientu.model.GioHang;
 import com.example.appbanthietbidientu.model.Loaisp;
 import com.example.appbanthietbidientu.model.Sanpham;
-import com.example.appbanthietbidientu.model.Sanphammoi;
 import com.example.appbanthietbidientu.ultil.ApiSp;
 import com.example.appbanthietbidientu.ultil.CheckConnect;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +54,7 @@ public class MainActivity extends AppCompatActivity{
     ListView listManHinhChinh;
     ArrayList<Loaisp> loaispArrayList;
     ArrayList<Sanpham> sanphamArrayList;
-    TextView titleHome,logout;
+    TextView titleHome,logout,txtEmail;
     public static ArrayList<GioHang> gioHangArrayList;
 
     @Override
@@ -134,7 +131,7 @@ public class MainActivity extends AppCompatActivity{
 
     private void GetDuLieusp() {
         loadMain.setVisibility(View.VISIBLE);
-        ApiSp.apiSp.getListsp("media","04505275-acd8-47cb-9bdb-5885d1fbaeff").enqueue(new Callback<List<Sanpham>>() {
+        ApiSp.apiDevice.getListsp().enqueue(new Callback<List<Sanpham>>() {
             @Override
             public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
                 sanphamArrayList= (ArrayList<Sanpham>) response.body();
@@ -212,7 +209,11 @@ public class MainActivity extends AppCompatActivity{
         listSanPhamMoi = findViewById(R.id.listSanphammoi);
         titleHome = findViewById(R.id.titleHome);
         logout = findViewById(R.id.logout);
+        txtEmail = findViewById(R.id.txtEmail);
         sanphamArrayList = new ArrayList<>();
+
+        String email = getIntent().getStringExtra("email");
+        txtEmail.setText(email);
 
         loaispArrayList=new ArrayList<>();
         loaispArrayList.add(0,new Loaisp(0,"Trang Chính",R.drawable.ic_action_home));

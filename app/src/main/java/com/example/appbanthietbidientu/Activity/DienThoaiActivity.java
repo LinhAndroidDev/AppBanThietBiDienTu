@@ -1,10 +1,5 @@
 package com.example.appbanthietbidientu.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
-
 import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Intent;
@@ -14,11 +9,14 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.appbanthietbidientu.Adapter.SanphamAdapter;
 import com.example.appbanthietbidientu.R;
@@ -73,7 +71,7 @@ public class DienThoaiActivity extends BaseFunctionActivity {
 
     private void getData() {
         loadDienThoai.setVisibility(View.VISIBLE);
-        ApiSp.apiSp.getlistDienThoai("media","d14eb726-c131-4860-a3e4-266d0aa206ed").enqueue(new Callback<List<Sanpham>>() {
+        ApiSp.apiDevice.getlistDienThoai().enqueue(new Callback<List<Sanpham>>() {
             @Override
             public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
                 dienThoaiArrayList= (ArrayList<Sanpham>) response.body();
