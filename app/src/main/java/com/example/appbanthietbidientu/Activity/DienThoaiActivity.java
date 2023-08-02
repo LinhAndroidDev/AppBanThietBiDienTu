@@ -71,7 +71,7 @@ public class DienThoaiActivity extends BaseFunctionActivity {
 
     private void getData() {
         loadDienThoai.setVisibility(View.VISIBLE);
-        ApiSp.apiDevice.getlistDienThoai().enqueue(new Callback<List<Sanpham>>() {
+        ApiSp.apiDevice.getlistDienThoai("media", "d14eb726-c131-4860-a3e4-266d0aa206ed").enqueue(new Callback<List<Sanpham>>() {
             @Override
             public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
                 dienThoaiArrayList= (ArrayList<Sanpham>) response.body();

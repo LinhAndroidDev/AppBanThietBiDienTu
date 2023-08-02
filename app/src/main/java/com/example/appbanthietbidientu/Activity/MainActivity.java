@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity{
 
     private void GetDuLieusp() {
         loadMain.setVisibility(View.VISIBLE);
-        ApiSp.apiDevice.getListsp().enqueue(new Callback<List<Sanpham>>() {
+        ApiSp.apiDevice.getListsp("media", "04505275-acd8-47cb-9bdb-5885d1fbaeff").enqueue(new Callback<List<Sanpham>>() {
             @Override
             public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
                 sanphamArrayList= (ArrayList<Sanpham>) response.body();

@@ -55,7 +55,7 @@ public class LaptopActivity extends BaseFunctionActivity {
 
     private void getData() {
         loadLapTop.setVisibility(View.VISIBLE);
-        ApiSp.apiDevice.getlistLapTop().enqueue(new Callback<List<Sanpham>>() {
+        ApiSp.apiDevice.getlistLapTop("media", "4452ff5b-1980-4626-b646-5fa4c03159d0").enqueue(new Callback<List<Sanpham>>() {
             @Override
             public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
                 laptopArrayList= (ArrayList<Sanpham>) response.body();
